@@ -1,0 +1,23 @@
+<?jelly escape-by-default='true'?>
+<j:jelly xmlns:j="jelly:core" xmlns:st="jelly:stapler" xmlns:d="jelly:define" xmlns:l="/lib/layout" xmlns:t="/lib/hudson" xmlns:f="/lib/form">
+	<f:entry title="${%Redmine URL}" field="url">
+		<f:textbox />
+	</f:entry>
+	<f:entry title="${%API Key}" field="apiKey">
+		<f:password />
+	</f:entry>
+	<f:entry title="${%Project Name}" field="projectName">
+		<f:textbox />
+	</f:entry>
+	<f:entry title="${%Custom Query}" field="customQueryId">
+		<f:textbox />
+	</f:entry>
+	<f:entry title="${%Sprint Size}" field="sprintSize">
+		<f:textbox />
+	</f:entry>
+	<f:entry title="">
+	    <div align="right">
+	        <f:repeatableDeleteButton />
+	    </div>
+	</f:entry>
+</j:jelly>

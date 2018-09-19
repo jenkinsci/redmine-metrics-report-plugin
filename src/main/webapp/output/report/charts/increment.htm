@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+      <meta charset=utf-8>
+      <script type="text/javascript" src='http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js'></script>
+      <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+</head>
+<body>
+<div id='container' style="min-width: 400px; height: 600px; margin: 0 auto"></div>
+
+<script type="text/javascript">
+
+	google.charts.load('current', {'packages':['corechart']});
+	google.charts.setOnLoadCallback(drawChart);
+
+	function drawChart() {
+
+		var chart = new google.visualization.ColumnChart(document.getElementById('container'));
+		var rowData = [];
+		var data = new google.visualization.DataTable();
+		data.addColumn('string', 'Date');
+
+		var options = {
+			title: 'Ticket increment chart (Open Tickets)',
+			focusTarget: 'category',
+			hAxis: {
+				format: 'yyyy/M/d'
+			},
+			vAxis: {
+				title: 'Tickets'
+			},
+			isStacked: true,
+			animation: {
+				startup: true,
+				duration: 1000,
+				easing: 'out'
+			}
+		};
+
+		$.get("tracker.csv", function(content) {
+
+			var tracker = content.split(',');
+			for(i = 0; i < tracker.length; i++){
+				data.addColumn('number', tracker[i]);
+			}
+
+			$.get("date.csv", function(content) {
+
+				var date = content.split(',');
+				for(i = 0; i < date.length; i++){
+					rowData.push([date[i]]);
+				}
+
+				var rows = [];
+
+				$.get("increment.csv", function(content) {
+					content = content.split(/\r\n|\n/);
+					for(i = 0; i < content.length - 1; i++){
+						var cols = content[i].split(',');
+						rows.push(cols);
+					}
+
+					for(i = 0; i < rows.length; i++){
+						for(j = 0; j < rows[i].length; j++){
+							rowData[j][i + 1] = Number(rows[i][j]);
+						}
+					}
+					data.addRows(rowData);
+					chart.draw(data, options);
+				});
+			});
+		});
+	}
+</script>
+
+</body>
+</html>

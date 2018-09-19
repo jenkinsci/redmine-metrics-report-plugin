@@ -1,0 +1,4 @@
+<?jelly escape-by-default='true'?>
+<div>
+    This plugin aggregates redmine tickets and creates html report using google chart
+</div>
