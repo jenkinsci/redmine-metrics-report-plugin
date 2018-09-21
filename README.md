@@ -14,7 +14,7 @@ A Jenkins plugin which generates Redmine reports
 * `API Key`: Specify Redmine API Key which can be found in Redmine's [My Account] -> API access key
 * `Project Name`: Specify Redmine's Project which you want to generate report for
 * `Custom Query ID`: Specify the Redmine custom query id. You can create a redmine custom query to search the issues for generating report.
-* `Sprint Size`: Specify the time span(day). for example, if you want to generate report on a weekly basis you should specify 7.
+* `Sprint Size`: Specify the time span(day). e.g.: if you want to generate report on a weekly basis you should specify 7.
 ![Specify Info](https://github.com/bestoak/redmine-metrics-report/blob/master/images/howTo3.png)
 
 4. In the Post-build Actions, use the [Publish HTML reports] plugin to display the generated html reports.
@@ -30,8 +30,10 @@ A Jenkins plugin which generates Redmine reports
 
 * `Issue Increment Chart (Open Issues)`: Show increment report of open issues
 ![Show Report](https://github.com/bestoak/redmine-metrics-report/blob/master/images/what1.png)
+
 * `Issue Open & Close Chart`: Show Open & Close Report of issues
 ![Show Report](https://github.com/bestoak/redmine-metrics-report/blob/master/images/what2.png)
+
 * `Assignee Chart`: Show Assignee report of issues
 ![Show Report](https://github.com/bestoak/redmine-metrics-report/blob/master/images/what3.png)
 
