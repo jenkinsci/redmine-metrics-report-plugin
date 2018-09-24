@@ -25,6 +25,10 @@ A Jenkins plugin which generates Redmine reports
 ![Set HTML Plugin](https://github.com/bestoak/redmine-metrics-report/blob/master/images/howTo4.png)
 
 #### Note: In order to allow Jenkins to run html page with javascript, You have to set the following script in Jenkins script console and clean browser cache. This setup won't survive after Jenkins service restart, so you have to set it again and clean browser cache.
+```
+System.setProperty("hudson.model.DirectoryBrowserSupport.CSP", "")
+```
+
 ![Script Console](https://github.com/bestoak/redmine-metrics-report/blob/master/images/howTo5.png)
 
 5. After the project is built successfully, click [Redmine Report] on the side menu to see the report
