@@ -8,7 +8,9 @@ import java.util.Map;
 
 import javax.servlet.ServletException;
 
+import org.jenkinsci.Symbol;
 import org.kohsuke.stapler.DataBoundConstructor;
+import org.kohsuke.stapler.DataBoundSetter;
 import org.kohsuke.stapler.QueryParameter;
 
 import com.taskadapter.redmineapi.bean.Issue;
@@ -32,14 +34,14 @@ public class MetricsReportBuilder extends Builder implements SimpleBuildStep {
 	private static final String CSV_PATH = Jenkins.getInstance().getRootDir()
 			+ "/plugins/redmine-metrics-report/output/report/charts/";
 
-	public List<MetricsReportSetting> settings;
+	private List<MetricsReportSetting> settings;
 
 	@DataBoundConstructor
 	public MetricsReportBuilder(List<MetricsReportSetting> settings) {
 		this.settings = settings;
 	}
 
-	@Extension
+	@Extension @Symbol("redminMetricsReport")
 	public static final class DescriptorImpl extends BuildStepDescriptor<Builder> {
 
 		public FormValidation doCheckName(@QueryParameter String value, @QueryParameter boolean useFrench)
@@ -94,5 +96,14 @@ public class MetricsReportBuilder extends Builder implements SimpleBuildStep {
 			listener.getLogger().println("[Redmine Metrics Report] Copy To : " + destFolder.getAbsolutePath());
 			dataUtil.copyFolder(srcFolder, destFolder);
 		}
+	}
+
+	public List<MetricsReportSetting> getSettings() {
+		return settings;
+	}
+	
+	@DataBoundSetter
+	public void setSettings(List<MetricsReportSetting> settings) {
+		this.settings = settings;
 	}
 }

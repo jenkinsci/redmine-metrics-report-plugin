@@ -1,5 +1,6 @@
 package io.jenkins.plugins.redmine;
 
+import org.jenkinsci.Symbol;
 import org.kohsuke.stapler.DataBoundConstructor;
 import org.kohsuke.stapler.QueryParameter;
 
@@ -45,7 +46,7 @@ public class MetricsReportSetting extends AbstractDescribableImpl<MetricsReportS
 		return sprintSize;
 	}
 	
-	@Extension
+	@Extension @Symbol("redminMetricsSetting")
 	public static class DescriptorImpl extends Descriptor<MetricsReportSetting> {
 		@Override
 		public String getDisplayName() {
