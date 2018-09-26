@@ -20,7 +20,7 @@ A Jenkins plugin which generates Redmine reports
 
 ![Specify Info](https://github.com/bestoak/redmine-metrics-report/blob/master/images/howTo3.png)
 
-4. In the Post-build Actions, use the [Publish HTML reports] plugin to display the generated html reports.
+4. In the Post-build Actions, use the [[HTML Publisher Plugin]](https://plugins.jenkins.io/htmlpublisher) to display the generated html reports.
 
 ![Set HTML Plugin](https://github.com/bestoak/redmine-metrics-report/blob/master/images/howTo4.png)
 

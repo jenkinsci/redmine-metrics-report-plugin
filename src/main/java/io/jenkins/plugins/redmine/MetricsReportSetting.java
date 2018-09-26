@@ -8,11 +8,12 @@ import hudson.Extension;
 import hudson.model.AbstractDescribableImpl;
 import hudson.model.Descriptor;
 import hudson.util.FormValidation;
+import hudson.util.Secret;
 
 public class MetricsReportSetting extends AbstractDescribableImpl<MetricsReportSetting> {
 
 	private String url;
-	private String apiKey;
+	private Secret apiKey;
 	private String projectName;
 	private int customQueryId;
 	private int sprintSize;
@@ -20,7 +21,7 @@ public class MetricsReportSetting extends AbstractDescribableImpl<MetricsReportS
 	@DataBoundConstructor
 	public MetricsReportSetting(String url, String apiKey, String projectName, int customQueryId, int sprintSize) {
 		this.url = url;
-		this.apiKey = apiKey;
+		this.apiKey = Secret.fromString(apiKey);
 		this.projectName = projectName;
 		this.customQueryId = customQueryId;
 		this.sprintSize = sprintSize;
@@ -30,7 +31,7 @@ public class MetricsReportSetting extends AbstractDescribableImpl<MetricsReportS
 		return url;
 	}
 
-	public String getApiKey() {
+	public Secret getApiKey() {
 		return apiKey;
 	}
 
@@ -41,12 +42,13 @@ public class MetricsReportSetting extends AbstractDescribableImpl<MetricsReportS
 	public int getCustomQueryId() {
 		return customQueryId;
 	}
-	
+
 	public int getSprintSize() {
 		return sprintSize;
 	}
-	
-	@Extension @Symbol("redminMetricsSetting")
+
+	@Extension
+	@Symbol("redmineMetricsSetting")
 	public static class DescriptorImpl extends Descriptor<MetricsReportSetting> {
 		@Override
 		public String getDisplayName() {
@@ -60,20 +62,49 @@ public class MetricsReportSetting extends AbstractDescribableImpl<MetricsReportS
 		 *            This parameter receives the value that the user has typed.
 		 * @return Indicates the outcome of the validation. This is sent to the browser.
 		 */
-		public FormValidation doCheckFilePattern(@QueryParameter String value) {
-			return FormValidation.ok();
-		}
-
-		public FormValidation doCheckEncoding(@QueryParameter String value) {
-			return FormValidation.ok();
-		}
-
-		public FormValidation doCheckKey(@QueryParameter String key) {
-			if (key == null || "".equals(key)) {
-				return FormValidation.error("");
-				// return FormValidation.error(Messages.errorCategoryRequired());
+		public FormValidation doCheckUrl(@QueryParameter String value) {
+			if (value == null || "".equals(value)) {
+				return FormValidation.error(Messages.error_require_redmineUrl());
 			}
 			return FormValidation.ok();
+		}
+
+		public FormValidation doCheckProjectName(@QueryParameter String value) {
+			if (value == null || "".equals(value)) {
+				return FormValidation.error(Messages.error_require_projectName());
+			}
+			return FormValidation.ok();
+		}
+
+		public FormValidation doCheckApiKey(@QueryParameter String value) {
+			if (value == null || "".equals(value)) {
+				return FormValidation.error(Messages.error_require_apiKey());
+			}
+			return FormValidation.ok();
+		}
+
+		public FormValidation doCheckCustomQueryId(@QueryParameter String value) {
+			try {
+				if (value == null || "".equals(value)) {
+					return FormValidation.error(Messages.error_require_queryId());
+				}
+				Integer.parseInt(value);
+				return FormValidation.ok();
+			} catch (NumberFormatException e) {
+				return FormValidation.error(Messages.error_invalid_queryId());
+			}
+		}
+
+		public FormValidation doCheckSprintSize(@QueryParameter String value) {
+			try {
+				if (value == null || "".equals(value)) {
+					return FormValidation.error(Messages.error_require_sprintSize());
+				}
+				Integer.parseInt(value);
+				return FormValidation.ok();
+			} catch (NumberFormatException e) {
+				return FormValidation.error(Messages.error_invalid_sprintSize());
+			}
 		}
 	}
 }

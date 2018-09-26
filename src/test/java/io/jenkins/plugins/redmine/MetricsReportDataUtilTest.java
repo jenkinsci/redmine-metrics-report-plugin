@@ -19,7 +19,6 @@ public class MetricsReportDataUtilTest {
 		try {
 			dataUtil.copyFolder(srcFolder, destFolder);
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}

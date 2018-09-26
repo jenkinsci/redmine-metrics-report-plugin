@@ -6,12 +6,9 @@ import java.time.LocalDate;
 import java.util.List;
 import java.util.Map;
 
-import javax.servlet.ServletException;
-
 import org.jenkinsci.Symbol;
 import org.kohsuke.stapler.DataBoundConstructor;
 import org.kohsuke.stapler.DataBoundSetter;
-import org.kohsuke.stapler.QueryParameter;
 
 import com.taskadapter.redmineapi.bean.Issue;
 
@@ -23,7 +20,6 @@ import hudson.model.Run;
 import hudson.model.TaskListener;
 import hudson.tasks.BuildStepDescriptor;
 import hudson.tasks.Builder;
-import hudson.util.FormValidation;
 import jenkins.model.Jenkins;
 import jenkins.tasks.SimpleBuildStep;
 
@@ -41,14 +37,8 @@ public class MetricsReportBuilder extends Builder implements SimpleBuildStep {
 		this.settings = settings;
 	}
 
-	@Extension @Symbol("redminMetricsReport")
+	@Extension @Symbol("redmineMetricsReport")
 	public static final class DescriptorImpl extends BuildStepDescriptor<Builder> {
-
-		public FormValidation doCheckName(@QueryParameter String value, @QueryParameter boolean useFrench)
-				throws IOException, ServletException {
-
-			return FormValidation.ok();
-		}
 
 		@Override
 		public boolean isApplicable(Class<? extends AbstractProject> aClass) {

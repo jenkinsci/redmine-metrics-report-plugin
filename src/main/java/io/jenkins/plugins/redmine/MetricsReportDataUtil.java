@@ -86,7 +86,7 @@ public class MetricsReportDataUtil {
 
 	public List<Issue> getIssueList(MetricsReportSetting setting) {
 
-		RedmineManager mgr = RedmineManagerFactory.createWithApiKey(setting.getUrl(), setting.getApiKey());
+		RedmineManager mgr = RedmineManagerFactory.createWithApiKey(setting.getUrl(), setting.getApiKey().getPlainText());
 		List<Issue> issues = null;
 
 		try {
