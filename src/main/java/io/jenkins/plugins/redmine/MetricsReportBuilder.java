@@ -80,15 +80,29 @@ public class MetricsReportBuilder extends Builder implements SimpleBuildStep {
 			csvUtil.delete(CSV_PATH);
 			// output csv
 			csvUtil.write(collectionDateMap, userList, ListByTrackers, setting, CSV_PATH);
-			// copy output folder to workspace
-			File srcFolder = new File(Jenkins.getInstance().getRootDir() + COPY_PATH);
-			File destFolder = new File(new File(workspace.toURI()) + "/redmineReports/" + setting.getProjectName());
-			listener.getLogger().println("[Redmine Metrics Report] Copy From : " + srcFolder.getAbsolutePath());
-			listener.getLogger().println("[Redmine Metrics Report] Copy To : " + destFolder.getAbsolutePath());
-			dataUtil.copyFolder(srcFolder, destFolder);
+			// copy report folder to workspace
+			copyReportToWorkspace(workspace, launcher, setting, listener);
 		}
 	}
 
+	private void copyReportToWorkspace(FilePath workspace, Launcher launcher, MetricsReportSetting setting,
+			TaskListener listener) throws IOException, InterruptedException {
+		// get report folder
+		FilePath srcFolder = new FilePath(new File(Jenkins.getInstance().getRootDir() + COPY_PATH));
+		
+		// get current build project workspace folder
+		FilePath projectWorkspace = new FilePath(launcher.getChannel(), workspace.getRemote() + "/redmineReports/" + setting.getProjectName());
+		projectWorkspace.deleteContents();
+		projectWorkspace.mkdirs();
+		FilePath destFolder = projectWorkspace.absolutize();
+
+		listener.getLogger().println("[Redmine Metrics Report] Copy From : " + srcFolder.getRemote());
+		listener.getLogger().println("[Redmine Metrics Report] Copy To : " + destFolder.getRemote());
+		
+		// copy the contents of srcFolder directory recursively into the destFolder directory.
+		srcFolder.copyRecursiveTo(destFolder);
+	}
+	
 	public List<MetricsReportSetting> getSettings() {
 		return settings;
 	}
