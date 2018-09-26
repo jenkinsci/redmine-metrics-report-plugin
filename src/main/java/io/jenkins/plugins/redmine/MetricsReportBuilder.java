@@ -37,7 +37,8 @@ public class MetricsReportBuilder extends Builder implements SimpleBuildStep {
 		this.settings = settings;
 	}
 
-	@Extension @Symbol("redmineMetricsReport")
+	@Extension
+	@Symbol("redmineMetricsReport")
 	public static final class DescriptorImpl extends BuildStepDescriptor<Builder> {
 
 		@Override
