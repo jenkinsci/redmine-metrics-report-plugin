@@ -5,11 +5,11 @@ A Jenkins plugin which generates Redmine reports
 
 1. Open project configure page, in build section click [Add build step] -> [Generate Redmine Metrics Report]
 
-![Build Step](https://github.com/bestoak/redmine-metrics-report/blob/master/images/howTo1.png)
+![Build Step](https://github.com/jenkinsci/redmine-metrics-report-plugin/blob/master/images/howTo1.png)
 
 2. Click [Add] to add multiple Redmine Projects
 
-![Add Projects](https://github.com/bestoak/redmine-metrics-report/blob/master/images/howTo2.png)
+![Add Projects](https://github.com/jenkinsci/redmine-metrics-report-plugin/blob/master/images/howTo2.png)
 
 3. Specify Redmine Info
 * `Redmine URL`: Specify Redmine's URL
@@ -18,36 +18,36 @@ A Jenkins plugin which generates Redmine reports
 * `Custom Query ID`: Specify the Redmine custom query id. You can create a redmine custom query to search the issues for generating report.
 * `Sprint Size`: Specify the time span(day). e.g.: if you want to generate report on a weekly basis you should specify 7.
 
-![Specify Info](https://github.com/bestoak/redmine-metrics-report/blob/master/images/howTo3.png)
+![Specify Info](https://github.com/jenkinsci/redmine-metrics-report-plugin/blob/master/images/howTo3.png)
 
 4. In the Post-build Actions, use the [[HTML Publisher Plugin]](https://plugins.jenkins.io/htmlpublisher) to display the generated html reports.
 
-![Set HTML Plugin](https://github.com/bestoak/redmine-metrics-report/blob/master/images/howTo4.png)
+![Set HTML Plugin](https://github.com/jenkinsci/redmine-metrics-report-plugin/blob/master/images/howTo4.png)
 
 #### Note: In order to allow Jenkins to run html page with javascript, You have to set the following script in Jenkins script console and clean browser cache. This setup won't survive after Jenkins service restart, so you have to set it again and clean browser cache.
 ```
 System.setProperty("hudson.model.DirectoryBrowserSupport.CSP", "")
 ```
 
-![Script Console](https://github.com/bestoak/redmine-metrics-report/blob/master/images/howTo5.png)
+![Script Console](https://github.com/jenkinsci/redmine-metrics-report-plugin/blob/master/images/howTo5.png)
 
 5. After the project is built successfully, click [Redmine Report] on the side menu to see the report
 
-![Show Report](https://github.com/bestoak/redmine-metrics-report/blob/master/images/howTo6.png)
+![Show Report](https://github.com/jenkinsci/redmine-metrics-report-plugin/blob/master/images/howTo6.png)
 
 ## Feature
 
 * `Issue Increment Chart (Open Issues)`: Show increment report of open issues
 
-![Show Report](https://github.com/bestoak/redmine-metrics-report/blob/master/images/what1.png)
+![Show Report](https://github.com/jenkinsci/redmine-metrics-report-plugin/blob/master/images/what1.png)
 
 * `Issue Open & Close Chart`: Show Open & Close Report of issues
 
-![Show Report](https://github.com/bestoak/redmine-metrics-report/blob/master/images/what2.png)
+![Show Report](https://github.com/jenkinsci/redmine-metrics-report-plugin/blob/master/images/what2.png)
 
 * `Assignee Chart`: Show Assignee report of issues
 
-![Show Report](https://github.com/bestoak/redmine-metrics-report/blob/master/images/what3.png)
+![Show Report](https://github.com/jenkinsci/redmine-metrics-report-plugin/blob/master/images/what3.png)
 
 ## Release
 
