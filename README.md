@@ -1,5 +1,5 @@
 # redmine-metrics-report
-A Jenkins plugin which generates Redmine reports
+A Jenkins plugin which generates Redmine reports. [Wiki Page](https://wiki.jenkins.io/display/JENKINS/Redmine+Metrics+Report+Plugin)
 
 ## How To Use
 
