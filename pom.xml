@@ -9,7 +9,7 @@
     </parent>
     <groupId>io.jenkins.plugins</groupId>
     <artifactId>redmine-metrics-report</artifactId>
-    <version>1.0.0</version>
+    <version>${revision}${changelist}</version>
     <packaging>hpi</packaging>
     <properties>
     	<revision>1.0.0</revision>
@@ -19,6 +19,8 @@
     </properties>
     <name>Redmine Metrics Report</name>
     <description>Redmine Metrics Report plugin for Jenkins</description>
+    <url>https://wiki.jenkins.io/display/JENKINS/Redmine+Metrics+Report+Plugin</url>
+    
     <licenses>
         <license>
             <name>MIT License</name>
@@ -34,13 +36,11 @@
         </developer>
     </developers>
 	
-    <url>https://wiki.jenkins.io/display/JENKINS/Redmine+Metrics+Report+Plugin</url>
     <scm>
         <connection>scm:git:git://github.com/jenkinsci/${project.artifactId}-plugin.git</connection>
         <developerConnection>scm:git:git@github.com:jenkinsci/${project.artifactId}-plugin.git</developerConnection>
         <url>https://github.com/jenkinsci/${project.artifactId}-plugin</url>
-      <tag>redmine-metrics-report-1.0.0</tag>
-  </scm>
+    </scm>
 
     <repositories>
         <repository>
