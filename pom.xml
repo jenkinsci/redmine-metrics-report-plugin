@@ -9,7 +9,7 @@
     </parent>
     <groupId>io.jenkins.plugins</groupId>
     <artifactId>redmine-metrics-report</artifactId>
-    <version>${revision}${changelist}</version>
+    <version>1.0.0</version>
     <packaging>hpi</packaging>
     <properties>
     	<revision>1.0.0</revision>
@@ -40,7 +40,8 @@
         <connection>scm:git:git://github.com/jenkinsci/${project.artifactId}-plugin.git</connection>
         <developerConnection>scm:git:git@github.com:jenkinsci/${project.artifactId}-plugin.git</developerConnection>
         <url>https://github.com/jenkinsci/${project.artifactId}-plugin</url>
-    </scm>
+      <tag>redmine-metrics-report-1.0.0</tag>
+  </scm>
 
     <repositories>
         <repository>
