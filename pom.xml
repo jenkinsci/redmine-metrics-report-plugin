@@ -12,6 +12,8 @@
     <version>1.0.0</version>
     <packaging>hpi</packaging>
     <properties>
+    	<revision>1.0.0</revision>
+        <changelist>-SNAPSHOT</changelist>
         <jenkins.version>2.7.3</jenkins.version>
         <java.level>8</java.level>
     </properties>
@@ -37,7 +39,8 @@
         <connection>scm:git:git://github.com/jenkinsci/${project.artifactId}-plugin.git</connection>
         <developerConnection>scm:git:git@github.com:jenkinsci/${project.artifactId}-plugin.git</developerConnection>
         <url>https://github.com/jenkinsci/${project.artifactId}-plugin</url>
-    </scm>
+      <tag>redmine-metrics-report-1.0.0</tag>
+  </scm>
 
     <repositories>
         <repository>
