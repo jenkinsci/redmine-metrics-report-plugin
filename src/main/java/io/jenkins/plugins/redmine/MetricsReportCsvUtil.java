@@ -1,9 +1,11 @@
 package io.jenkins.plugins.redmine;
 
 import java.io.File;
-import java.io.FileWriter;
+import java.io.FileOutputStream;
 import java.io.FilenameFilter;
 import java.io.IOException;
+import java.io.OutputStreamWriter;
+import java.nio.charset.StandardCharsets;
 import java.time.LocalDate;
 import java.time.ZoneId;
 import java.util.ArrayList;
@@ -20,17 +22,27 @@ public class MetricsReportCsvUtil {
 
 	private static final String NEW_LINE_SEPARATOR = "\r\n";
 
-	public void delete(String path) {
+	public void delete(String path) throws IOException {
 
 		final File folder = new File(path);
 		final File[] files = folder.listFiles(new FilenameFilter() {
 			@Override
 			public boolean accept(final File dir, final String name) {
-				return name.endsWith(".csv");
+				boolean res = false;
+				if (name != null) {
+					res = name.endsWith(".csv");
+				}
+				return res;
 			}
 		});
-		for (final File file : files) {
-			file.delete();
+		if (files != null) {
+			for (final File file : files) {
+				if (file.exists()) {
+					if (!file.delete()) {
+						throw new IOException("Unable to delete file");
+					}
+				}
+			}
 		}
 	}
 
@@ -133,7 +145,8 @@ public class MetricsReportCsvUtil {
 
 	private <T> void writeCsvFile(String fileName, List<T> list) {
 
-		try (FileWriter fileWriter = new FileWriter(fileName, true)) {
+		try (OutputStreamWriter fileWriter =
+	             new OutputStreamWriter(new FileOutputStream(fileName, true), StandardCharsets.UTF_8)) {
 
 			int cnt = 0;
 			// Write list to the CSV file

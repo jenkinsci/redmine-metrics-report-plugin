@@ -3,15 +3,15 @@ A Jenkins plugin which generates Redmine reports. [Wiki Page](https://wiki.jenki
 
 ## How To Use
 
-1. Open project configure page, in build section click [Add build step] -> [Generate Redmine Metrics Report]
+1. Open project configure page, in build section click [Add build step] -> [Generate Redmine Metrics Report].
 
 ![Build Step](https://github.com/jenkinsci/redmine-metrics-report-plugin/blob/master/images/howTo1.png)
 
-2. Click [Add] to add multiple Redmine Projects
+2. Click [Add] to add multiple Redmine Projects.
 
 ![Add Projects](https://github.com/jenkinsci/redmine-metrics-report-plugin/blob/master/images/howTo2.png)
 
-3. Specify Redmine Info
+3. Specify Redmine Info.
 * `Redmine URL`: Specify Redmine's URL
 * `API Key`: Specify Redmine API Key which can be found in Redmine's [My Account] -> API access key
 * `Project Name`: Specify Redmine's Project which you want to generate report for
@@ -31,7 +31,7 @@ System.setProperty("hudson.model.DirectoryBrowserSupport.CSP", "")
 
 ![Script Console](https://github.com/jenkinsci/redmine-metrics-report-plugin/blob/master/images/howTo5.png)
 
-5. After the project is built successfully, click [Redmine Report] on the side menu to see the report
+5. After the project is built successfully, click [Redmine Report] on the side menu to see the report.
 
 ![Show Report](https://github.com/jenkinsci/redmine-metrics-report-plugin/blob/master/images/howTo6.png)
 
@@ -51,8 +51,8 @@ System.setProperty("hudson.model.DirectoryBrowserSupport.CSP", "")
 
 ## Release
 
-### 1.0.0
-* first release
+### 1.0.0 (Sep 27, 2018)
+* Initial release.
 
 ## Author
 
