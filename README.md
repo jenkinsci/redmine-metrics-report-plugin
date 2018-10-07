@@ -1,3 +1,7 @@
+[![Jenkins Plugins](https://img.shields.io/jenkins/plugin/v/redmine-metrics-report.svg)](https://plugins.jenkins.io/redmine-metrics-report)
+[![MIT License](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE.md)
+[![Build Status](https://ci.jenkins.io/buildStatus/icon?job=Plugins/redmine-metrics-report-plugin/master)](https://ci.jenkins.io/blue/organizations/jenkins/Plugins%2Fredmine-metrics-report-plugin/branches)
+
 # redmine-metrics-report
 A Jenkins plugin which generates Redmine reports. [Wiki Page](https://wiki.jenkins.io/display/JENKINS/Redmine+Metrics+Report+Plugin)
 
