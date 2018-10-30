@@ -18,7 +18,7 @@ A Jenkins plugin which generates Redmine reports. [Wiki Page](https://wiki.jenki
 3. Specify Redmine Info.
 * `Redmine URL`: Specify Redmine's URL
 * `API Key`: Specify Redmine API Key which can be found in Redmine's [My Account] -> API access key
-* `Project Name`: Specify Redmine's Project which you want to generate report for
+* `Project Name`: Specify Redmine's Project Identifier which you want to generate report for, use Identifier not Name in the project setting page.
 * `Custom Query ID`: Specify the Redmine custom query id. You can create a redmine custom query to search the issues for generating report.
 * `Sprint Size`: Specify the time span(day). e.g.: if you want to generate report on a weekly basis you should specify 7.
 
