@@ -55,6 +55,10 @@ System.setProperty("hudson.model.DirectoryBrowserSupport.CSP", "")
 
 ## Release
 
+### 1.0.1 (Oct 31, 2018)
+* Minor bug fix.
+* Add description for field [project name]
+
 ### 1.0.0 (Sep 27, 2018)
 * Initial release.
 

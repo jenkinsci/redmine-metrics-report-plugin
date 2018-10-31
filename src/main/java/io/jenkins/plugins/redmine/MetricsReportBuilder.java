@@ -3,6 +3,7 @@ package io.jenkins.plugins.redmine;
 import java.io.File;
 import java.io.IOException;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -63,16 +64,23 @@ public class MetricsReportBuilder extends Builder implements SimpleBuildStep {
 
 			// get issue by query id
 			List<Issue> issues = dataUtil.getIssueList(setting);
-			listener.getLogger().println("[Redmine Metrics Report] Project Name : " + setting.getProjectName());
-			listener.getLogger().println("[Redmine Metrics Report] Total Issues Count : " + issues.size());
+			listener.getLogger().println("[Redmine Metrics Report]-INFO-> Project Name: " + setting.getProjectName());
+
+			if (issues == null) {
+				listener.getLogger().println("[Redmine Metrics Report]-ERROR-> Can't generate report for project ["
+						+ setting.getProjectName() + "], please verify plugin configuration.");
+				issues = new ArrayList<>();
+			} else {
+				listener.getLogger().println("[Redmine Metrics Report]-INFO-> Total Issues Count: " + issues.size());
+			}
 
 			// get collection date list
 			Map<LocalDate, LocalDate> collectionDateMap = dataUtil.getcollectionDateMap(issues,
 					setting.getSprintSize());
-			
+
 			// Get user list
 			List<String> userList = dataUtil.getUserList(issues);
-			
+
 			// categorize by tracker
 			Map<String, List<Issue>> ListByTrackers = dataUtil.categorizeList(issues);
 
@@ -96,8 +104,8 @@ public class MetricsReportBuilder extends Builder implements SimpleBuildStep {
 		projectWorkspace.mkdirs();
 		FilePath destFolder = projectWorkspace.absolutize();
 
-		listener.getLogger().println("[Redmine Metrics Report] Copy From : " + srcFolder.getRemote());
-		listener.getLogger().println("[Redmine Metrics Report] Copy To : " + destFolder.getRemote());
+		listener.getLogger().println("[Redmine Metrics Report]-INFO-> Copy From: " + srcFolder.getRemote());
+		listener.getLogger().println("[Redmine Metrics Report]-INFO-> Copy To: " + destFolder.getRemote());
 		
 		// copy the contents of srcFolder directory recursively into the destFolder directory.
 		srcFolder.copyRecursiveTo(destFolder);
