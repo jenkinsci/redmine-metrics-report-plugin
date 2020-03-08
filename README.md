@@ -64,7 +64,7 @@ System.setProperty("hudson.model.DirectoryBrowserSupport.CSP", "")
 
 ## Author
 
-* [Shepherd Lee](https://github.com/bestoak)
+* [Song Li](https://github.com/bestoak)
 
 ## License
 
